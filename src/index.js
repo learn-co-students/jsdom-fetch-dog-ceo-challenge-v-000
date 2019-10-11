@@ -46,14 +46,11 @@ function filterBreeds(li) {
   const filteredBreeds = document.getElementById("breed-dropdown")
 
   filteredBreeds.addEventListener("change", function(event) {
-    if (filteredBreeds.value == "") {
+    if (filteredBreeds.value == "" || li.innerHTML.charAt(0) == filteredBreeds.value) {
       li.style.display = "";
     }
     else if (li.innerHTML.charAt(0) != filteredBreeds.value) {
       li.style.display = "none";
-    }
-    else if (li.innerHTML.charAt(0) == filteredBreeds.value) {
-      li.style.display = "";
     }
   })
 }

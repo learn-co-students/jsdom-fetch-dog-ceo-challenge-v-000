@@ -1,35 +1,44 @@
 console.log('%c HI', 'color: firebrick')
 
-function fetchDogImages() {
-  return fetch("https://dog.ceo/api/breeds/image/random/4")
+document.addEventListener("DOMContentLoaded", function() {
+  loadImages();
+  loadBreeds();
+})
+
+function loadImages() {
+  const imgUrl = "https://dog.ceo/api/breeds/image/random/4"
+
+  return fetch(imgUrl)
     .then(resp => resp.json())
-    .then(json => addDogImages(json))
+    .then(results => {
+      results.message.forEach(image => addImage(image))
+    });
 }
 
-function addDogImages(json) {
-  const imageContainer = document.getElementById("dog-image-container");
-  json.message.forEach(image => {
-    const newImg = document.createElement('img');
-    newImg.src = image;
-    imageContainer.appendChild(newImg);
-  })
+function addImage(picUrl) {
+  const container = document.getElementById("dog-image-container");
+  const newImage = document.createElement('img');
+  newImage.src = picUrl;
+  container.appendChild(newImage);
 }
 
-function fetchBreeds() {
+function loadBreeds() {
   return fetch('https://dog.ceo/api/breeds/list/all')
     .then(resp => resp.json())
-    .then(json => addBreeds(json))
+    .then(results => {
+      const breeds = Object.keys(results.message);
+      addBreeds(breeds);
+    });
 }
 
-function addBreeds(json) {
-  const dogBreeds = document.getElementById("dog-breeds");
-  json.message.forEach(breed => {
-    const li = document.createElement('li');
-    li.innerHTML = `<li>${breed}</li>`;
-    dogBreeds.appendChild(li);
-  })
+function addBreeds(breeds) {
+  const ul = document.getElementById("dog-breeds");
+  breeds.forEach(breed => {
+    const li = document.createElement("li");
+    li.innerText = breed;
+    ul.appendChild(li);
+    li.addEventListener("click", function(event) {
+      event.target.style.color = "blue";
+    });
+  });
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-  fetchDogImages()
-})

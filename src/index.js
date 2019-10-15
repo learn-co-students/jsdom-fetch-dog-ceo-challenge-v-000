@@ -6,7 +6,7 @@
 // } 
 
 const fetchDogs = function() {
-    const imgUrl = "https://dog.ceo/api/breeds/image/random/4";
+    const imgUrl = "https://dog.ceo/api/breeds/image/random/10";
     fetch(imgUrl)
         .then(response => response.json())
         .then(json => renderDogs(json))
@@ -15,10 +15,12 @@ const fetchDogs = function() {
 const renderDogs = function (json) {
 const div = document.querySelector('#dog-image-container');
     json.message.forEach(key => {
+    const ele = document.createElement('div')
     const img = document.createElement('img')
         // console.log(key);        
-        img.setAttribute("src", key)
-        div.appendChild(img)
+        img.setAttribute("src", key);
+        ele.appendChild(img);
+        div.appendChild(ele);
     })
 }
 

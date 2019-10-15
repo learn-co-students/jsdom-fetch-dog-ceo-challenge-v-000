@@ -1,9 +1,4 @@
 // console.log('%c HI', 'color: firebrick')
-// window.onload = () => {
-//         fetchDogs()
-//         // renderDogs()
-//         document.getElementById("breed-dropdown").addEventListener("change", handleBreedSelection)
-// } 
 
 const fetchDogs = function() {
     const imgUrl = "https://dog.ceo/api/breeds/image/random/10";
@@ -24,8 +19,29 @@ const div = document.querySelector('#dog-image-container');
     })
 }
 
+const fetchBreeds = function() {
+    const breedUrl = 'https://dog.ceo/api/breeds/list/all';
+    fetch(breedUrl)
+        .then(response => response.json())
+        .then(json => renderBreeds(json))
+}
+
+const renderBreeds = function (json) {
+    const ul = document.querySelector('#dog-breeds');
+    Object.keys(json.message).forEach((element) => {
+        console.log(element);  
+        // let index = 0;
+        const li = document.createElement('li');
+        const liText = document.createElement('liText');
+        console.log(liText.textContent = json.message);      
+        // const liText = document.createElement('text').innerText;
+        li.appendChild(liText);
+        ul.appendChild(li);
+    })
+}
 
 
 document.addEventListener('DOMContentLoaded', function() {
     fetchDogs();
+    fetchBreeds();
 })

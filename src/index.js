@@ -38,18 +38,28 @@ const renderBreeds = function (json) {
         // const liText = document.createElement('text').innerText;
         li.appendChild(liText);
         ul.appendChild(li);
+        li.addEventListener("click", () => {
+            li.style.color = "red";
+        })       
     })
+    // const breedColorClick = function () {
+    //     console.log(document.getElementsByTagName('liText'));
+    //     // liText.setAttribute('onclick', element);
+    //     // liText.addEventListener('click', breedColorClick);
+    // }
 
-    const breedColorClick = function() {
-        document.getElementsByTagName("#liText").style.color = "fuschia";
-        liText.setAttribute('onclick', element);
-        liText.addEventListener('click', breedColorClick);
-        
+    let selectBreed = document.getElementById("#breed-dropdown");
+    selectBreed.addEventListener('keyup', filterBreeds);
+
+    function filterBreeds() {
+        console.log(a);
     }
 }
+
 
 
 document.addEventListener('DOMContentLoaded', function() {
     fetchDogs();
     fetchBreeds();
 })
+// liText.addEventListener('click', breedColorClick);

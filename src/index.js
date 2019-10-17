@@ -19,28 +19,35 @@ const div = document.querySelector('#dog-image-container');
     })
 }
 
-const fetchBreeds = function() {
+const fetchBreeds = function (filter = "") {
     const breedUrl = 'https://dog.ceo/api/breeds/list/all';
     fetch(breedUrl)
         .then(response => response.json())
-        .then(json => renderBreeds(json))
+        .then(json => renderBreeds(json, filter))
 }
 
-const renderBreeds = function (json) {
+const renderBreeds = function (json, filter = "") {
     const ul = document.querySelector('#dog-breeds');
-    Object.keys(json.message).forEach((element) => {
+    if(filter != ""){
+        ul.innerHTML = "";
+    }
+    Object.keys(json.message).forEach((breed) => {
         // console.log(`element is ${element}`);  
         // let index = 0;
-        const li = document.createElement('li');
-        const liText = document.createElement('liText');
-        liText.textContent = element;
-        // console.log(liText.textContent = element);      
-        // const liText = document.createElement('text').innerText;
-        li.appendChild(liText);
-        ul.appendChild(li);
-        li.addEventListener("click", () => {
-            li.style.color = "red";
-        })       
+        if (breed.startsWith(filter)) {
+            // console.log(breed);
+            const li = document.createElement('li');
+            const liText = document.createElement('liText');
+            liText.textContent = breed;
+            // console.log(liText.textContent = element);      
+            // const liText = document.createElement('text').innerText;
+            li.appendChild(liText);
+            ul.appendChild(li);
+            li.addEventListener("click", () => {
+                li.style.color = "red";
+            })
+        } 
+        
     })
     // const breedColorClick = function () {
     //     console.log(document.getElementsByTagName('liText'));
@@ -59,17 +66,20 @@ const updateBreeds = (breed) => {
     ul.appendChild(li);
 }
 
-function filterBreeds(letter) {
-    const dropdown = document.getElementById("#breed-dropdown");
-    dropdown.addEventListener('change', () => {
-        let filteredBreeds = dogs.filter(breed => breed.startsWith(letter))
-        renderBreeds(filteredBreeds)
+const filterBreeds = function(letter) {
+    const dropdown = document.getElementById("breed-dropdown");
+    dropdown.addEventListener('change', (event) => {
+        const filter = event.target.value;
+
+        // let filteredBreeds = dogs.filter(breed => breed.startsWith(letter))
+        fetchBreeds(filter);
     })
 }
 
 document.addEventListener('DOMContentLoaded', function() {
     fetchDogs();
     fetchBreeds();
+    filterBreeds();
 })
 // liText.addEventListener('click', breedColorClick);
 

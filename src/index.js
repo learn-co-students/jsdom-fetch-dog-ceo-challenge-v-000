@@ -48,15 +48,23 @@ const renderBreeds = function (json) {
     //     // liText.addEventListener('click', breedColorClick);
     // }
 
-    let selectBreed = document.getElementById("#breed-dropdown");
-    selectBreed.addEventListener('keyup', filterBreeds);
-
-    function filterBreeds() {
-        console.log(a);
-    }
 }
 
+// grab ul and append new list
 
+const updateBreeds = (breed) => {
+    const ul = document.getElementById("dog-breeds");
+    const li = document.createElement('li');
+    li.innerText = breed; 
+    ul.appendChild(li);
+}
+
+function filterBreeds(renderBreeds, letter) {
+    const dropdown = document.getElementById("#breed-dropdown");
+    dropdown.addEventListener('change', () => {
+        renderBreeds.filter(breed => breed.startsWith(letter))
+    })
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     fetchDogs();

@@ -1,4 +1,9 @@
 // console.log('%c HI', 'color: firebrick')
+document.addEventListener('DOMContentLoaded', function () {
+    fetchDogs();
+    fetchBreeds();
+    filterBreeds();
+})
 
 const fetchDogs = function() {
     const imgUrl = "https://dog.ceo/api/breeds/image/random/10";
@@ -76,11 +81,7 @@ const filterBreeds = function(letter) {
     })
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    fetchDogs();
-    fetchBreeds();
-    filterBreeds();
-})
+
 // liText.addEventListener('click', breedColorClick);
 
 // let dogs

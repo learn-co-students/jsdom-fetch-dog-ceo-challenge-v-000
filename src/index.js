@@ -59,10 +59,11 @@ const updateBreeds = (breed) => {
     ul.appendChild(li);
 }
 
-function filterBreeds(renderBreeds, letter) {
+function filterBreeds(letter) {
     const dropdown = document.getElementById("#breed-dropdown");
     dropdown.addEventListener('change', () => {
-        renderBreeds.filter(breed => breed.startsWith(letter))
+        let filteredBreeds = dogs.filter(breed => breed.startsWith(letter))
+        renderBreeds(filteredBreeds)
     })
 }
 
@@ -71,3 +72,36 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchBreeds();
 })
 // liText.addEventListener('click', breedColorClick);
+
+// let dogs
+
+// fetch(breedUrl)
+//     .then(function (response) {
+//         return response.json();
+//     })
+//     .then(function (myJson) {
+//         dogs = myJson.message;
+// }) 
+
+// document.getElementById("breed-dropdown").onchange=function() {
+//   let letter = this.value  
+
+//   dogsUL.innerHTML = ''
+
+//   for (let dog in dogs) {
+//     if (letter == dog[0]) {
+//       dogLi = document.createElement("li");
+//       dogLi.innerHTML = dog
+//       dogsUL.appendChild(dogLi)
+
+//       dogs[dog].forEach(dog => {
+//         const nestedDogUL =  document.createElement("ul");
+//         const nestedDogLi = document.createElement("li");
+//         nestedDogLi.innerHTML = dog
+//         nestedDogUL.appendChild(nestedDogLi)
+//         dogLi.appendChild(nestedDogUL)
+//       });
+//     }
+//   }
+//   makeRedonClick();
+// } 

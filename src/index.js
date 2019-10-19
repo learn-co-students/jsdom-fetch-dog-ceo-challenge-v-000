@@ -31,7 +31,7 @@ function addElementToDOM(obj, elementType, elementToAppendTo, addColorEvent) {
 
 function addColorChangeEvent(element) {
 	element.addEventListener('click', function(event) {
-		event.target.style.color = 'lime';
+		event.target.style.color = '#8A795D';
 	})
 }
 
@@ -42,10 +42,6 @@ function getBreeds() {
 	.then(resp => resp.json())
 	.then(json => addElementToDOM(json, 'li', breedElement, true)
 )}
-
-
-
-
 
 window.onload = function() {
 	getImages();

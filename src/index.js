@@ -16,10 +16,7 @@ function getImages() {
 	.then(json => addImagesToDOM(json))
 }
 
-function addElementToDOM(obj, elementType, elementToAppendTo, addColorEvent, filterElements) {
-	if (filterElements) {
-		obj = filterElements();
-	}
+function addElementToDOM(obj, elementType, elementToAppendTo, addColorEvent) {
 	obj.forEach(function(el) {
 	let newElement = document.createElement(elementType);
 	newElement.innerHTML = el;
@@ -43,7 +40,7 @@ function getBreeds() {
 	.then(json => {
 		 OBJECT = Object.keys(json.message);
 		 const breedElement = document.getElementById('dog-breeds');
-		 addElementToDOM(OBJECT, 'li', breedElement, true, false);
+		 addElementToDOM(OBJECT, 'li', breedElement, true);
 	 })
 }
 
@@ -52,7 +49,8 @@ function addFilteredBreeds() {
 	menuElement.addEventListener('change', function() {
 		removeElements();
 		const breedElement = document.getElementById('dog-breeds');
-		//addElementToDOM(OBJECT, 'li', breedElement, false, true);  //make sure to uncomment when filter filterElements is complete
+		const filteredArray = filterElements(); 
+		addElementToDOM(filteredArray, 'li', breedElement, false);
 	})
 }
 
@@ -63,11 +61,14 @@ function removeElements() {
 
 function filterElements() {
 	let userMenuValue = document.querySelector('select').value;
-	console.log(userMenuValue);
-	// look at OBJECTS how do I navigate the objects array to co
-	// if element.firstLetter.toUpper() first letter === userMenuValue
-	// filteredBreeds.push(element)
-	// return newObject array for obj variable to transfrom to DOM elements
+	let filteredArray = [];
+	let i;
+	for (i = 0; i < OBJECT.length; i++) {
+		if (userMenuValue === OBJECT[i][0]) {
+			filteredArray.push(OBJECT[i]);
+		}
+	}
+	return filteredArray;
 }
 
 window.onload = function() {

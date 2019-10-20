@@ -36,9 +36,19 @@ function loadingImage(dogUrl){
         node.innerHTML = dogBreed
         dogBreeds.appendChild(node)
         //appending to the UL
+        node.addEventListener("click", changeColor)
+        //element is being listened on by the event listener. and changes the color.
 
       })
       // foreach, has a function to do something with that breed
   })
-
 }
+
+//when they click on a breed, it changes color
+function changeColor(){
+  document.body.style.color = "purple"
+  return false;
+}
+
+//use the drop bar to filter out.
+// if user selects 'a' filter out breeds to match the first letter.

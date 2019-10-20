@@ -23,13 +23,22 @@ function loadingImage(dogUrl){
 }
 }
 
-function loadingBreeds(){
+ function loadingBreeds(){
   const breedUrl = 'https://dog.ceo/api/breeds/list/all'
+    var dogBreeds = document.getElementById('dog-breeds')
+
   fetch(breedUrl)
   .then(resp => resp.json())
-  .then(breeds => )
-  var longList = document.createElement("UL")
-  var textnode = document.createTextNode("hello")
-  node.appendChild(textnode)
-  document.getElementById("dog-breeds").appendChild(node)
+  .then(breeds => {
+      Object.keys(breeds.message).forEach(function(dogBreed){
+        //array getting the keys from array. and then using for each function
+        var node = document.createElement("LI")
+        node.innerHTML = dogBreed
+        dogBreeds.appendChild(node)
+        //appending to the UL
+
+      })
+      // foreach, has a function to do something with that breed
+  })
+
 }

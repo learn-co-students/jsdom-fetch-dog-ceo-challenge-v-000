@@ -16,11 +16,12 @@ function getImages() {
 	.then(json => addImagesToDOM(json))
 }
 
-function addElementToDOM(obj, elementType, elementToAppendTo, addColorEvent) {
-	let newArray = Object.keys(obj.message);
-	newArray.forEach(function(el) {
+function addElementToDOM(obj, elementType, elementToAppendTo, addColorEvent, filterElements) {
+	if (filterElements) {
+		obj = filterElements();
+	}
+	obj.forEach(function(el) {
 	let newElement = document.createElement(elementType);
-	console.log(el)
 	newElement.innerHTML = el;
 	if (addColorEvent) {
 		addColorChangeEvent(newElement);
@@ -37,13 +38,40 @@ function addColorChangeEvent(element) {
 
 function getBreeds() {
 	const breedUrl = 'https://dog.ceo/api/breeds/list/all';
-	let breedElement = document.getElementById('dog-breeds');
 	fetch(breedUrl)
 	.then(resp => resp.json())
-	.then(json => addElementToDOM(json, 'li', breedElement, true)
-)}
+	.then(json => {
+		 OBJECT = Object.keys(json.message);
+		 const breedElement = document.getElementById('dog-breeds');
+		 addElementToDOM(OBJECT, 'li', breedElement, true, false);
+	 })
+}
+
+function addFilteredBreeds() {
+	const menuElement = document.getElementById('breed-dropdown');
+	menuElement.addEventListener('change', function() {
+		removeElements();
+		const breedElement = document.getElementById('dog-breeds');
+		//addElementToDOM(OBJECT, 'li', breedElement, false, true);  //make sure to uncomment when filter filterElements is complete
+	})
+}
+
+function removeElements() {
+		let listEl = document.querySelector('ul');
+		listEl.innerHTML = "";
+}
+
+function filterElements() {
+	let userMenuValue = document.querySelector('select').value;
+	console.log(userMenuValue);
+	// look at OBJECTS how do I navigate the objects array to co
+	// if element.firstLetter.toUpper() first letter === userMenuValue
+	// filteredBreeds.push(element)
+	// return newObject array for obj variable to transfrom to DOM elements
+}
 
 window.onload = function() {
 	getImages();
 	getBreeds();
+	addFilteredBreeds();
 }

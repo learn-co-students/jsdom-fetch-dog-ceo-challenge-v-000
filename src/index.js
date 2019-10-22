@@ -3,6 +3,7 @@ console.log('%c HI', 'color: firebrick')
 document.addEventListener('DOMContentLoaded', function () {
   dogImage()
   loadingBreeds()
+
 });
 // when DOM is loaded.. do this
 
@@ -54,20 +55,25 @@ function changeColor(){
 // if user selects 'a' filter out breeds to match the first letter.
 
 function myFunction() {
-  var e, input, filter, i, td;
+  var e, input, filter, i, ul, li;
+
   e = document.getElementById("breed-dropdown");
   input = e.options[e.selectedIndex].value;
-  filter = input.value.toUpperCase();
+  filter = input.toUpperCase();
+  ul = document.getElementById("dog-breeds");
+  li = ul.getElementsByTagName('li');
+
   // table = document.getElementById("myTable");
   // tr = table.getElementsByTagName("tr");
-  for (i = 0; i < input.length; i++) {
-    td = input[i].getElementsByTagName("option")[0];
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        input[i].style.display = "";
-      } else {
-        input[i].style.display = "none";
+  for (i = 0; i < li.length; i++) {
+    var listText = li[i];
+    var txtValue = listText.textContent || listText.innerText;
+
+    if (txtValue[0].toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
       }
-    }
+
   }
 }

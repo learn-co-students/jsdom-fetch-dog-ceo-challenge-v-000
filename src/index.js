@@ -52,3 +52,22 @@ function changeColor(){
 
 //use the drop bar to filter out.
 // if user selects 'a' filter out breeds to match the first letter.
+
+function myFunction() {
+  var e, input, filter, i, td;
+  e = document.getElementById("breed-dropdown");
+  input = e.options[e.selectedIndex].value;
+  filter = input.value.toUpperCase();
+  // table = document.getElementById("myTable");
+  // tr = table.getElementsByTagName("tr");
+  for (i = 0; i < input.length; i++) {
+    td = input[i].getElementsByTagName("option")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        input[i].style.display = "";
+      } else {
+        input[i].style.display = "none";
+      }
+    }
+  }
+}

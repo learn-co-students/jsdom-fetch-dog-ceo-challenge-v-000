@@ -1,7 +1,7 @@
 //console.log('%c HI', 'color: firebrick')
   const imgUrl = "https://dog.ceo/api/breeds/image/random/4"
   const breedUrl = 'https://dog.ceo/api/breeds/list/all'
-  var breeds; //declare breeds as a global so you can access it when calling it within arguments of functions that are called back wtihin other functions
+  var breeds; //declare breeds as a global variable so you can access it when calling it within arguments of functions that are called back wtihin other functions like triggerFilter() (read about hoisting)
 
 function fetchDogs() {
     fetch(imgUrl)
@@ -24,13 +24,14 @@ function fetchBreeds(){
  fetch(breedUrl)
  .then(resp => resp.json())
  .then(json => {
-  breeds = json.message
+  breeds = json.message;
    renderBreeds(breeds);
   });
 }
 
 function renderBreeds(breeds){
   const ul = document.getElementById('dog-breeds')
+  //if you don't remove the li child elements then the search results will get appended to the full list that was renedered when renderbreeds called upon Dom content load
   while (ul.firstChild) {
     ul.firstChild.remove();
     }
@@ -48,7 +49,7 @@ function renderBreeds(breeds){
   function triggerFilter(){
     let breedDropdown = document.getElementById('breed-dropdown')
     breedDropdown.addEventListener('change', function (event){
-    let letterToSearch = event.target.value;
+    let letterToSearch = breedDropdown.value;
     findMatch(letterToSearch, breeds)
   });
   }

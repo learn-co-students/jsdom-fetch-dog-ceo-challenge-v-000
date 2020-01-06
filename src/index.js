@@ -2,18 +2,22 @@ console.log('%c HI', 'color: firebrick')
 
 
 const imgUrl = "https://dog.ceo/api/breeds/image/random/4"
+
 function onPageLoad() {
-  window.addEventListener('DOMContentLoaded', (event) => {
-    fetch(imgUrl).then(function(response) {
-      return response.json();
-    }).then(addImageElements(json))
-  });
+  return fetch(imgUrl).then(resp => resp.json()).then(json => addImageElements(json));
 }
+
 function addImageElements(json) {
   const imagesDiv = document.getElementById("dog-image-container");
-  for (let jsonLink in json) {
-    let newImageElem = document.createElement('IMG');
-    newImageElem.src = jsonLink;
+  json.message.forEach(image => {
+    console.log(image);
+    const newImageElem = document.createElement('img');
+    newImageElem.src = image;
     imagesDiv.appendChild(newImageElem);
-  }
+  });
+    
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  onPageLoad()
+})

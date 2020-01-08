@@ -16,31 +16,36 @@ function addImageElements(json) {
     const newImageElem = document.createElement('img');
     newImageElem.src = image;
     imagesDiv.appendChild(newImageElem);
-  });
-    
+  });   
 }
-
 
 function getDogBreeds() {
   return fetch(breedUrl).then(resp => resp.json()).then(json => listBreeds(json));
 }
 
 function listBreeds(json) {
-  const dogBreedList = document.getElementById("dog-breeds");
+  let dogBreedList = document.getElementById("dog-breeds");
   breeds = Object.keys(json.message)
   breeds.forEach(breed => {
-    const newLiElem = document.createElement('li');
+    let newLiElem = document.createElement('li');
     newLiElem.textContent = breed;
+    newLiElem.addEventListener('click', changeColor)
     dogBreedList.appendChild(newLiElem);
 
   })
-  // const allLiElements = document.getElementsByTagName('li');
-  dogBreedList.addEventListener('click', function (event) {
-    for (const liElem of dogBreedList.childNodes) {
-      if (event.target.innerText === liElem.innerText) {
-        liElem.style.color = "blue"
-      }
-    }
+}
+
+function changeColor(event) {
+  event.target.style.color = "blue";
+}
+
+function dropdownFiltering() {
+  const dropdownElem = document.getElementById('breed-dropdown');
+  const dogBreedList = document.getElementById("dog-breeds");
+  dropdownElem.addEventListener('change', function (){
+    dogBreedList.children.
+    console.log(this.value)
+
   })
 }
 
@@ -49,4 +54,5 @@ function listBreeds(json) {
 document.addEventListener('DOMContentLoaded', function () {
   getDogImages()
   getDogBreeds()
+  dropdownFiltering()
 })

@@ -37,16 +37,18 @@ function loadBreeds() {
         .then(function(response) {
             return response.json();
         }).then(function(json) {
-            breed = Object.keys(json.message);
-            breed.forEach(addBreeds(breed));
+            breeds = Object.keys(json.message);
+            addBreeds(breeds);
         });
 }
 
-function addBreeds(breeds, index) {
-    breeds = document.querySelector('#dog-breeds');
-    newBreed = document.createElement("li");
-    newBreed.innerText = breed;
-    breeds.appendChild(newBreed);
+function addBreeds(breeds) {
+    var breedSection = document.querySelector('#dog-breeds');
+    breeds.forEach(function(breed) {
+        var newBreed = document.createElement("li");
+        newBreed.innerText = breed;
+        breedSection.appendChild(newBreed);
+    });
 }
 
 // STEP 3

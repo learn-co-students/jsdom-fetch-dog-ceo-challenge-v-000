@@ -73,6 +73,47 @@ function changeColor() {
 
 
 
+function filterBreeds() {
+
+    var breedDropdown = document.getElementById('#breed-dropdown');
+    breedDropdown.addEventListener('change', function(event) {
+        // Declare variables
+        var input, filter, list, listItem;
+        input = document.getElementById("#breed-dropdown");
+        filter = input.value;
+        list = document.getElementById("#dog-breeds");
+        listItem = list.getElementsByTagName("li");
+
+        //   var lis = $("#ulelement li");
+        //     if(lis.length > threshold) {
+        //    lis.eq(lis.length - 1).remove();
+        // }
+
+        // var x = 'some string';
+        // alert(x.charAt(0)); // alerts 's'
+
+        if (listItem.charAt(0) != filter) {
+            list.removeChild(listItem);
+        }
+    });
+}
+
+
+
+// Loop through all table rows, and hide those who don't match the search query
+//     for (i = 0; i < tr.length; i++) {
+//         td = tr[i].getElementsByTagName("td")[0];
+//         if (td) {
+//             txtValue = td.textContent || td.innerText;
+//             if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//                 tr[i].style.display = "";
+//             } else {
+//                 tr[i].style.display = "none";
+//             }
+//         }
+//     }
+// }
+
 
 // let breeds = [];
 

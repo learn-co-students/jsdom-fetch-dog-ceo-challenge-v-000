@@ -39,6 +39,7 @@ function loadBreeds() {
         }).then(function(json) {
             breeds = Object.keys(json.message);
             addBreeds(breeds);
+            console.log(json)
         });
 }
 
@@ -48,6 +49,8 @@ function addBreeds(breeds) {
         var newBreed = document.createElement("li");
         newBreed.innerText = breed;
         breedSection.appendChild(newBreed);
+        newBreed.style.cursor = 'pointer';
+        newBreed.addEventListener("click", changeColor);
     });
 }
 
@@ -57,7 +60,10 @@ function addBreeds(breeds) {
 
 // When the user clicks any of the dog breed list items, the color the text should change.
 
-
+function changeColor() {
+    event.target.style.color = "green";
+    return false;
+}
 
 // STEP 4 
 

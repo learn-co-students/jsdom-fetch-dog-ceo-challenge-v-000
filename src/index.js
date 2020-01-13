@@ -92,6 +92,8 @@ function filterBreeds() {
         // var x = 'some string';
         // alert(x.charAt(0)); // alerts 's'
 
+        loadBreeds();
+
         if (listItem.charAt(0) != filter) {
             list.removeChild(listItem);
         }
@@ -100,43 +102,9 @@ function filterBreeds() {
 
 
 
-// Loop through all table rows, and hide those who don't match the search query
-//     for (i = 0; i < tr.length; i++) {
-//         td = tr[i].getElementsByTagName("td")[0];
-//         if (td) {
-//             txtValue = td.textContent || td.innerText;
-//             if (txtValue.toUpperCase().indexOf(filter) > -1) {
-//                 tr[i].style.display = "";
-//             } else {
-//                 tr[i].style.display = "none";
-//             }
-//         }
-//     }
-// }
-
 
 // let breeds = [];
 
-// document.addEventListener('DOMContentLoaded', function () {
-//   loadImages();
-//   loadBreedOptions();
-// });
-
-// function loadImages() {
-//   const imgUrl = "https://dog.ceo/api/breeds/image/random/4"
-//   fetch(imgUrl)
-//     .then(res=> res.json())
-//     .then(results => {
-//       results.message.forEach(image => addImage(image))
-//     });
-// }
-
-// function addImage(dogPicUrl) {
-//   let container = document.querySelector('#dog-image-container');
-//   let newImageEl = document.createElement('img');
-//   newImageEl.src = dogPicUrl;
-//   container.appendChild(newImageEl);
-// }
 
 // function loadBreedOptions() {
 //   const breedUrl = 'https://dog.ceo/api/breeds/list/all'
@@ -182,8 +150,4 @@ function filterBreeds() {
 //   li.style.cursor = 'pointer';
 //   ul.appendChild(li);
 //   li.addEventListener('click', updateColor);
-// }
-
-// function updateColor(event) {
-//   event.target.style.color = 'palevioletred';
 // }

@@ -1,0 +1,7 @@
+#dog-image-container{
+  display: flex;
+}
+
+#dog-image-container div img{
+  width:100%;
+}

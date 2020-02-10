@@ -3,8 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loadBreeds();
 });
 
-
-console.log('%c HI', 'color: firebrick')
+let breeds = [];
 
 function loadImages() {
     fetch("https://dog.ceo/api/breeds/image/random/4")
@@ -52,6 +51,8 @@ function addBreeds(breeds) {
         newBreed.style.cursor = 'pointer';
         newBreed.addEventListener("click", changeColor);
     });
+
+    filterBreeds();
 }
 
 // STEP 3
@@ -75,79 +76,22 @@ function changeColor() {
 
 function filterBreeds() {
 
-    var breedDropdown = document.getElementById('#breed-dropdown');
+    var breedDropdown = document.querySelector('#breed-dropdown');
     breedDropdown.addEventListener('change', function(event) {
-        // Declare variables
-        var input, filter, list, listItem;
-        input = document.getElementById("#breed-dropdown");
-        filter = input.value;
-        list = document.getElementById("#dog-breeds");
-        listItem = list.getElementsByTagName("li");
 
-        //   var lis = $("#ulelement li");
-        //     if(lis.length > threshold) {
-        //    lis.eq(lis.length - 1).remove();
-        // }
-
-        // var x = 'some string';
-        // alert(x.charAt(0)); // alerts 's'
-
-        loadBreeds();
-
-        if (listItem.charAt(0) != filter) {
-            list.removeChild(listItem);
-        }
+        selectBreedsStartingWith(event.target.value);
     });
 }
 
+function selectBreedsStartingWith(letter) {
+    updateBreedList(breeds.filter(breed => breed.startsWith(letter)));
+}
 
+function updateBreedList(breeds) {
+    let ul = document.querySelector('#dog-breeds');
+    while (ul.firstChild) {
+        ul.removeChild(ul.firstChild);
+    }
 
-
-// let breeds = [];
-
-
-// function loadBreedOptions() {
-//   const breedUrl = 'https://dog.ceo/api/breeds/list/all'
-//   fetch(breedUrl)
-//     .then(res => res.json())
-//     .then(results => {
-
-//       breeds = Object.keys(results.message);
-//       updateBreedList(breeds);
-//       addBreedSelectListener();
-//     });
-// }
-
-// function updateBreedList(breeds) {
-//   let ul = document.querySelector('#dog-breeds');
-//   removeChildren(ul);
-//   breeds.forEach(breed => addBreed(breed));
-// }
-
-// function removeChildren(element) {
-//   let child = element.lastElementChild;
-//   while (child) {
-//     element.removeChild(child);
-//     child = element.lastElementChild;
-//   }
-// }
-
-// function selectBreedsStartingWith(letter) {
-//   updateBreedList(breeds.filter(breed => breed.startsWith(letter)));
-// }
-
-// function addBreedSelectListener() {
-//   let breedDropdown = document.querySelector('#breed-dropdown');
-//   breedDropdown.addEventListener('change', function (event) {
-//     selectBreedsStartingWith(event.target.value);
-//   });
-// }
-
-// function addBreed(breed) {
-//   let ul = document.querySelector('#dog-breeds');
-//   let li = document.createElement('li');
-//   li.innerText = breed;
-//   li.style.cursor = 'pointer';
-//   ul.appendChild(li);
-//   li.addEventListener('click', updateColor);
-// }
+    addBreeds(breeds)
+}

@@ -22,22 +22,27 @@ function selectDropdown(event) {
     letter = event.target.value
     // console.log("breeds", breeds)
 
-    breeds.filter((breed) => breed.startsWith("letter"));
-    //console.log("tetter", letter) //displays letter a-d selected
+        //console.log("tetter", letter) //displays letter a-d selected
+    // breeds.filter((breed) => breed.startsWith("letter"));
+    //     console.log(startsWith("letter"));
+    let startsWith("letter") = breeds.filter((breed) => breed.startsWith("letter"));
+            console.log(startsWith("letter"));
 
-        // Wrong language translate to javascript!
-        ('.breeds').on("click", function() {
-        var letter = $(this).text()[0];
-            $('.breedsItems').each(function() {
-                if ($(this).text()[0] == letter) {
-                   $(this).show();
-                        } else {
-                           $(this).hide();
-                        }
+        // WRONG LANGUAGE TRANSLATE TO JAVASCRIPT!
+        // $('.myFilters li').on("click", function() {
+        // ('breeds').on("click", function() {
+        // var letter = $(this).text()[0];
+        //     //   $('.myFilterItems li').each(function() {
+        //     $('.breedsItems').each(function() {
+        //         if ($(this).text()[0] == letter) {
+        //            $(this).show();
+        //                 } else {
+        //                    $(this).hide();
+        //                 }
                       
-                    });
-                });
-            };
+        //         });
+        //     );
+ };
         
     
 
@@ -129,7 +134,7 @@ function breedUrl() {
     
 //         // const startsWithN = countries.filter((country) => country.startsWith("N"));
 //         let startsWith("letter") = breeds.filter((breed) => breed.startsWith("letter"));
-//         console.log(startsWithA);
+//         console.log(startsWith("letter"));
 // }
 
 // function filterBreeds() {

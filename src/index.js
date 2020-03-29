@@ -25,9 +25,10 @@ function selectDropdown(event) {
     breeds.filter((breed) => breed.startsWith("letter"));
     //console.log("tetter", letter) //displays letter a-d selected
 
-        ('.breeds li').on("click", function() {
+        // Wrong language translate to javascript!
+        ('.breeds').on("click", function() {
         var letter = $(this).text()[0];
-            $('.breedsItems li').each(function() {
+            $('.breedsItems').each(function() {
                 if ($(this).text()[0] == letter) {
                    $(this).show();
                         } else {
@@ -127,7 +128,7 @@ function breedUrl() {
 //         dogBreed = document.getElementById("dog-breeds")
     
 //         // const startsWithN = countries.filter((country) => country.startsWith("N"));
-//         const startsWithA = breeds.filter((breed) => breed.startsWith("letter"));
+//         let startsWith("letter") = breeds.filter((breed) => breed.startsWith("letter"));
 //         console.log(startsWithA);
 // }
 

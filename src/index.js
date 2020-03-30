@@ -124,12 +124,14 @@ function breedUrl() {
             breedName = test[i]
             //debugger
                 newDog.innerText = breedName
-                    if breedName.filter = "letter"
+                    if (breedName.filter = "letter") {
+                        dogBreed.appendChild(newDog)
+                    } else {
+                        dogBreed.appendChild(newDog)
+                    }
+
                     
-
-                    else
-
-                dogBreed.appendChild(newDog)
+                // dogBreed.appendChild(newDog)
     }
 }
 // function filterBreeds() {

@@ -4,22 +4,33 @@ console.log('%c HI', 'color: firebrick')
 // document.getElementById("dog-breeds")
 // let originalBreeds = Object.keys(json.message)
 let breeds = []
+let dogBreed = []
+let test = []
 
-
+//toggling color black to red and red to black
+const colorObject = {
+    "red": "", 
+    "": "red"
+}
 window.onload = () => {
     fetchImage();
     breedUrl();
-    // document.getElementById("breed-dropdown").addEventListener("change", selectDropdown ) // filterBreeds()
-    // document.getElementById("breed-dropdown").addEventListener("change", filterBreeds()) // 
-    document.addEventListener('DOMContentLoaded', function () {
-        filterBreeds();
-    });
+    filterBreeds();
 }
+
+// document.adddEventListener('click', callbackFunction)
+document.adddEventListener('click', filterBreeds)
+document.adddEventListener('click', selectDropdown)
+document.adddEventListener('click', breedUrl)
+
+
+
+
 
 function selectDropdown(event) {
     // console.log(event.target.value)
     // sets letter to the value of the breed=dropdown "a -d "
-    letter = event.target.value
+    letter = (event.target.value)
      console.log("breeds", breeds)
 
         //console.log("tetter", letter) //displays letter a-d selected
@@ -62,11 +73,6 @@ function fetchImage() {
         });
 }
 
-//toggling color black to red and red to black
-const colorObject = {
-    "red": "", 
-    "": "red"
-}
 
 function breedUrl() {
     const breedUrl = 'https://dog.ceo/api/breeds/list/all'
@@ -84,8 +90,8 @@ function breedUrl() {
              })
              breeds = test
             //  filterBreeds(breedList) breedList is not defined               //  breedName = dogName
-            filterBreeds()
-            selectDropdown()
+            // filterBreeds()
+            selectDropdown(event)
                     // ('.breeds li').on("click", function() {
                     //     var letter = $(this).text()[0];
                     //     $('.breedsItems li').each(function() {

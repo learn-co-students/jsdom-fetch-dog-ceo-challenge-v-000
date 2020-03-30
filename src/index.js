@@ -20,13 +20,13 @@ function selectDropdown(event) {
     // console.log(event.target.value)
     // sets letter to the value of the breed=dropdown "a -d "
     letter = event.target.value
-    // console.log("breeds", breeds)
+     console.log("breeds", breeds)
 
         //console.log("tetter", letter) //displays letter a-d selected
-    // breeds.filter((breed) => breed.startsWith("letter"));
-    //     console.log(startsWith("letter"));
-    let startsWith("letter") = breeds.filter((breed) => breed.startsWith("letter"));
-            console.log(startsWith("letter"));
+    //  breeds.filter((breed) => breed.startsWith("letter"));
+    //      console.log(startsWith("letter"));
+    // let startsWith("letter") = breeds.filter((breed) => breed.startsWith("letter"));
+    //         console.log(startsWith("letter"));
 
         // WRONG LANGUAGE TRANSLATE TO JAVASCRIPT!
         // $('.myFilters li').on("click", function() {
@@ -85,7 +85,7 @@ function breedUrl() {
              breeds = test
             //  filterBreeds(breedList) breedList is not defined               //  breedName = dogName
             filterBreeds()
-
+            selectDropdown()
                     // ('.breeds li').on("click", function() {
                     //     var letter = $(this).text()[0];
                     //     $('.breedsItems li').each(function() {
@@ -124,6 +124,11 @@ function breedUrl() {
             breedName = test[i]
             //debugger
                 newDog.innerText = breedName
+                    if breedName.filter = "letter"
+                    
+
+                    else
+
                 dogBreed.appendChild(newDog)
     }
 }

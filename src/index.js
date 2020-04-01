@@ -12,19 +12,31 @@ const colorObject = {
     "red": "", 
     "": "red"
 }
+
 window.onload = () => {
     fetchImage();
-    breedUrl();
+    fetchBreed();
     filterBreeds();
 }
 
 // document.adddEventListener('click', callbackFunction)
-document.adddEventListener('click', filterBreeds)
-document.adddEventListener('click', selectDropdown)
-document.adddEventListener('click', breedUrl)
 
 
+// document.getElementById("breed-dropdown").addEventListener('click', selectDropdown) 
+// breedDropDown = document.getElementById("breed-dropdown")
+// breedDropDown.addEventListener('click', selectDropdown(event)) 
 
+
+// listening for click on drop dowm a - d.
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("breed-dropdown").addEventListener('click', selectDropdown) 
+})
+
+
+       // dogBreed.addEventListener('click', function (event) {
+                    // as soon as the list item is clicked, change its color to red 
+                    // event.target.style.color = colorObject[event.target.style.color];
+            //  })
 
 
 function selectDropdown(event) {
@@ -33,7 +45,7 @@ function selectDropdown(event) {
     letter = (event.target.value)
      console.log("breeds", breeds)
 
-        //console.log("tetter", letter) //displays letter a-d selected
+        //console.log("letter", letter) //displays letter a-d selected
     //  breeds.filter((breed) => breed.startsWith("letter"));
     //      console.log(startsWith("letter"));
     // let startsWith("letter") = breeds.filter((breed) => breed.startsWith("letter"));
@@ -53,6 +65,33 @@ function selectDropdown(event) {
                       
         //         });
         //     );
+
+         // ('.breeds li').on("click", function() {
+                    //     var letter = $(this).text()[0];
+                    //     $('.breedsItems li').each(function() {
+                    //       if ($(this).text()[0] == letter) {
+                    //         $(this).show();
+                    //       } else {
+                    //         $(this).hide();
+                    //       }
+                      
+                    //     });
+                    //   });
+
+                    //   for (i = 0; i < breeds.length; i++) {
+                    //     a = breeds[i].getElementById("a")["0"];
+                    //     txtValue = a.textContent || a.innerText 
+                //         if (txtValue.toUpperCase().indexOf(filter) >-1) {
+                //             breeds[i].style.display = ""; 
+                //         // elsif
+
+                //         // elsif
+
+                //         // elsif
+                //         } else {
+                //             breeds[i].style.display = "none";
+                //         }
+                //  }
  };
         
     
@@ -63,18 +102,17 @@ function fetchImage() {
     fetch(imgUrl)
         .then(resp => resp.json())
         .then(json => {
-            document.getElementById("dog-breeds")
-            dogBreed = document.getElementById("dog-breeds")
+            dogPictures = document.getElementById("dog-image-container")
             ////parse the response as JSON
             for (let i = 0; i < json.message.length; i++) {
                 //add image elements to the DOM for each🤔 image in the array
-                dogBreed.innerHTML += `<li><img src="${json.message[i]}" alt="Dog Breeds"></li>`
+                dogPictures.innerHTML += `<div><img src="${json.message[i]}" alt="Dog Pictures"></div>`
             } 
         });
 }
 
 
-function breedUrl() {
+function fetchBreed() {
     const breedUrl = 'https://dog.ceo/api/breeds/list/all'
     //on page load, fetch all the dog breeds using the url above 
     fetch(breedUrl)
@@ -84,14 +122,23 @@ function breedUrl() {
             dogBreed = document.getElementById("dog-breeds")
                 test = Object.keys(json.message) //originalBreeds 
                  //debugger
+                    // dogBreed.addEventListener('click', function (event) {
+                    // as soon as the list item is clicked, change its color to red 
+                    // event.target.style.color = colorObject[event.target.style.color];
+            //  })
+           
+             for (let i = 0; i < test.length; i++) {
+                
+                dogBreed.innerHTML += `<li>${test[i]}</li>`
+            } 
                     dogBreed.addEventListener('click', function (event) {
                     // as soon as the list item is clicked, change its color to red 
                     event.target.style.color = colorObject[event.target.style.color];
              })
-             breeds = test
+
             //  filterBreeds(breedList) breedList is not defined               //  breedName = dogName
             // filterBreeds()
-            selectDropdown(event)
+            // selectDropdown(event)
                     // ('.breeds li').on("click", function() {
                     //     var letter = $(this).text()[0];
                     //     $('.breedsItems li').each(function() {

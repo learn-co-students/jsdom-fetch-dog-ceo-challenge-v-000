@@ -46,6 +46,17 @@ function filterDogBreeds(event) {
             //  test.appendChild(result)
 };          
 
+function removeBreeds() {
+    // let originalList = document.getElementById("dog-breeds")
+    // let modifiedList = originalList.removeChild("dog-breeds")
+    //     return modifiedList
+
+    let element = document.getElementById("top");
+        while (element.firstChild) {
+            element.removeChild(element.firstChild);
+        }
+}
+
 function updateList() {
     // fetchBreed()
     filterBreeds()

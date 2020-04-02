@@ -23,10 +23,10 @@ window.onload = () => {
 // document.adddEventListener('click', callbackFunction)
 // listening for click on drop dowm a - d.
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("breed-dropdown").addEventListener('click', selectDropdown) 
+    document.getElementById("breed-dropdown").addEventListener('click', filterDogBreeds) 
 })
 
-function selectDropdown(event) {
+function filterDogBreeds(event) {
     // console.log(event.target.value)
     // sets letter to the value of the breed=dropdown "a -d "
     letter = (event.target.value)
@@ -43,10 +43,44 @@ function selectDropdown(event) {
              let result = test.filter((event) => event.startsWith(letter))
              console.log(result)
              return result
+            //  test.appendChild(result)
+};          
+
+function updateList() {
+    // fetchBreed()
+    filterBreeds()
+    let updatedList = test 
+    return updatedList //returns test 
+
+    const breedList = document.querySelector(`#breed-dropdown`)
+    breedList.appendChild(updatedList)(`result`)
+
+        // filterDogBreeds()
+        // let = updatedList = result
+    
+}
+
+// function createMenuItem(name) {
+//     let li = document.createElement('li');
+//     li.textContent = name;
+//     return li;
+// }
+// get the ul#menu
+// const menu = document.querySelector('#menu');
+
+// add menu item
+// menu.appendChild(createMenuItem('Home'));
+// menu.appendChild(createMenuItem('Services'));
+// menu.appendChild(createMenuItem('About Us'));
+
+
+
+
+
+
 
 
     //  console.log("breeds", breeds)
-
         //console.log("letter", letter) //displays letter a-d selected
     //  breeds.filter((breed) => breed.startsWith("letter"));
         //  console.log(startsWith("letter"));
@@ -147,7 +181,7 @@ function selectDropdown(event) {
                 //         }
                 //  }
 
- };
+
         
     
 

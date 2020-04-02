@@ -77,22 +77,40 @@ function removeBreeds() {
 function filterDogBreeds(event) {
     // sets letter to the value of the breed=dropdown "a -d "
     letter = (event.target.value)
-             console.log(test);
+            //  console.log(test);
+            // Gets breeds that start with the letter selected.
              let result = test.filter((event) => event.startsWith(letter))
-             console.log(result)
+             console.log(result) 
              return result
             //  test.appendChild(result)
-            updateList(result)
+            updateList()
 };          
 
-function updateList(result) {
-    // fetchBreed()
-    // filterBreeds()
-    let updatedList = result
+function updateList() {
+    let newList = document.querySelector(`#dog-breeds`)
+    // let updatedList = result
+    // newList.appendChild(updateList)
+    newList.appendChild(result)
+
+    // var elmnt = document.createElement("dog-breeds");
+    // var textnode = document.createTextNode(updatedList);
+    // elmnt.appendChild(textnode);
+    // var item = document.getElementById(breedList);
+
+
+    // document.getElementById("dog-breeds").appendChild(result)
+    // document.getElementById("dog-breeds").appendChild(updateList)
     
     // const breedList = document.querySelector("dog-breeds")
-    const breedList = document.getElementById("dog-breeds")
-    breedList.appendChild(updatedList)
+    // const breedList = document.getElementById("dog-breeds")
+    // const breedList = document.querySelector('#dog-breeds');
+    // breedList.appendChild(updateList(`dog-breeds`))
+    // const breedList = document.querySelector(dogBreed)
+    // breedList.appendChild(updateList)
+        // return breedList
+
+
+    // breedList.appendChild(updatedList)
     // return breedList.appendChild(updatedList)
     // return updatedList
     // return result

@@ -2,7 +2,10 @@
 
 ## Challenge 1
 
-This repository includes an `index.html` file that loads an `index.js` file.
+<p>Here is an illustration of this workspace by Richard Burd:</p>
+<img src="https://i.imgur.com/Gp7XTqb.jpg" title="source: imgur.com" />
+
+This repository includes an `index.html` file that loads a `burd_index.js` file.
 
 ```js
 const imgUrl = "https://dog.ceo/api/breeds/image/random/4"

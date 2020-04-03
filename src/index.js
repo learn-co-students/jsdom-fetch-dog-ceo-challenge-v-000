@@ -67,7 +67,6 @@ function removeBreeds() {
     let filter = filterDogBreeds
     console.log(event)
     let dogBreed = document.getElementById("dog-breeds")
-    // let element = document.getElementById("breed-dropdown");
         while (dogBreed.firstChild) {
         dogBreed.removeChild(dogBreed.firstChild);
         }
@@ -81,16 +80,62 @@ function filterDogBreeds(event) {
             // Gets breeds that start with the letter selected.
              let result = test.filter((event) => event.startsWith(letter))
              console.log(result) 
-             return result
+             updateList()
+                return result
             //  test.appendChild(result)
-            updateList()
+            
 };          
 
-function updateList() {
-    let newList = document.querySelector(`#dog-breeds`)
+// function createMenuItem(name) {
+//     let li = document.createElement('li');
+//     li.textContent = name;
+//     return li;
+
+function updateList(breed) {
+    // debugger //HIT
+    // let li = document.createElement(`li`)
+    // // debugger //DROP DOWN MENU DOES NOT WORK!!!
+    // li.textContent = breed;
+    // return breed
+
+    // var para = document.createElement("P");                       // Create a <p> node
+    // let modifiedList = document.createElement("ul")
+    // var t = document.createTextNode("This is a paragraph.");      // Create a text node
+    // let newList = document.
+    // para.appendChild(t);                                          // Append the text to <p>
+
+    // document.getElementById("myDIV").appendChild(para);           // Append <p> to <div> with id="myDIV"
+
+
+}
+    //Iterate over array
+    // array.forEach(item => console.log(item));
+     result.forEach(breed => console.log(breed))
+
+    // let selectedList = result.forEach(breed => console.log(breed))
+    // selectedList.textContent = breed
+    // return selectedList
+    
+
+
+// function createMenuItem(name) {
+//     let li = document.createElement('li');
+//     li.textContent = name;
+//     return li;
+
+
+    // let li = document.createElement('li');
+    //      li.textContent = name;
+    //          return li;
+
+
+
+    // let newList = document.querySelector(`#dog-breeds`)
     // let updatedList = result
+    // let breedList = result
     // newList.appendChild(updateList)
-    newList.appendChild(result)
+    // newList.appendChild(result)
+    // console.log(newList)
 
     // var elmnt = document.createElement("dog-breeds");
     // var textnode = document.createTextNode(updatedList);
@@ -117,10 +162,6 @@ function updateList() {
     // return breedList
     
 
-    
-
- 
-}
 
 // function createMenuItem(name) {
 //     let li = document.createElement('li');

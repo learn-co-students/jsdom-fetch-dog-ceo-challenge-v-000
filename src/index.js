@@ -123,8 +123,22 @@ function renderBreeds(message) {
 //     return li;
 
 function updateList(message) {
+    // debugger
     renderBreeds(message)
-    console.log(message) // message HAS THE BREED NAMES DISPLAYS UL NUMBERS
+
+     let ul = document.querySelector(`#dog-breeds`)
+
+     for (let i = 0; i < test.length; i++) {
+         let createLI = document.createElement('li') //document is not a function
+         debugger
+         createLI.innerHTML=message[i]
+    }
+     
+
+
+
+    // document.li.appendChild(li)
+    // console.log(message) // message HAS THE BREED NAMES DISPLAYS UL NUMBERS
     // console.log(dogBreed) // dogBreed  <ul id="dog-breeds">...<ul> DiSPLAYS UL NUMBERS
     // console.log(test) // (11) ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] DISPLAYS UL NUMBERS
 }

@@ -18,7 +18,7 @@ const colorObject = {
 window.onload = () => {
     fetchImage();
     fetchBreed();
-    filterBreeds();
+    // filterBreeds();
 }
 
 // document.adddEventListener('click', callbackFunction)
@@ -65,7 +65,7 @@ function fetchBreed() {
 
 function removeBreeds() {
     let filter = filterDogBreeds
-    console.log(event)
+    // console.log(event)
     let dogBreed = document.getElementById("dog-breeds")
         while (dogBreed.firstChild) {
         dogBreed.removeChild(dogBreed.firstChild);
@@ -86,22 +86,24 @@ function filterDogBreeds(event) {
             
 };      
 
-function filterBreeds() {
-    dogBreed.innerHTML = ""
-    for (let i = 0; i < test.length; i++) {
-        //Create li 
-        newDog = document.createElement('li')
-            breedName = test[i]
-            //debugger
-                newDog.innerText = breedName
-                    if (breedName.filter = "letter") {
-                        dogBreed.appendChild(newDog)
-                    } else {
-                        dogBreed.appendChild(newDog)
-                    }
-            // dogBreed.appendChild(newDog)
-    }
-}
+// function filterBreeds() {
+//     dogBreed.innerHTML = ""
+//     for (let i = 0; i < test.length; i++) {
+//         //Create li 
+//         newDog = document.createElement('li')
+//             breedName = test[i]
+//             //debugger
+//                 newDog.innerText = breedName
+//                     (breedName.filter = "letter") //{
+//                         debugger
+
+//                         dogBreed.appendChild(newDog)
+//                     // } else {
+//                     //     dogBreed.appendChild(newDog)
+//                     //}
+//             // dogBreed.appendChild(newDog)
+//     }
+// }
 
 function renderBreeds(message) {
     //document.getElementById("dog-breeds")
@@ -124,15 +126,19 @@ function renderBreeds(message) {
 
 function updateList(message) {
     // debugger
-    renderBreeds(message)
-
-     let ul = document.querySelector(`#dog-breeds`)
-
+    //  renderBreeds(message) //when commented out displays ul breeds that start with letter and ul undefined
+    // Set ul to the li on document
+    //  let ul = document.querySelector(`#dog-breeds`) //diplays ul numbers and breeds that start with letter
+    // itereate over each dog breed name
      for (let i = 0; i < test.length; i++) {
-         let createLI = document.createElement('li') //document is not a function
-         debugger
-         createLI.innerHTML=message[i]
+        // create li for each dog breed name
+         let createLI = document.createElement('li') 
+         if (message[i] != undefined){
+            createLI.innerHTML=message[i]
+            document.body.appendChild(createLI) //displays breeds that start with letter
+         }
     }
+}
      
 
 
@@ -141,7 +147,7 @@ function updateList(message) {
     // console.log(message) // message HAS THE BREED NAMES DISPLAYS UL NUMBERS
     // console.log(dogBreed) // dogBreed  <ul id="dog-breeds">...<ul> DiSPLAYS UL NUMBERS
     // console.log(test) // (11) ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] DISPLAYS UL NUMBERS
-}
+
 // // function updateList(result) {
 // //     renderBreeds(result)
 //     // renderBreeds(message) // message is not defined

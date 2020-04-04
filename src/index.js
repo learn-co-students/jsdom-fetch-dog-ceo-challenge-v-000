@@ -1,1 +1,284 @@
 console.log('%c HI', 'color: firebrick')
+
+
+// document.getElementById("dog-breeds")
+// let originalBreeds = Object.keys(json.message)
+let breeds = []
+let dogBreed = []
+let test = []
+let letter = []
+let result = []
+
+//toggling color black to red and red to black
+const colorObject = {
+    "red": "", 
+    "": "red"
+}
+
+window.onload = () => {
+    fetchImage();
+    fetchBreed();
+    // filterBreeds();
+}
+
+// document.adddEventListener('click', callbackFunction)
+// listening for click on drop dowm a - d.
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("breed-dropdown").addEventListener('change', removeBreeds) 
+})
+
+function fetchImage() {
+    const imgUrl = "https://dog.ceo/api/breeds/image/random/4"
+    //fetch the images using the url above
+    fetch(imgUrl)
+        .then(resp => resp.json())
+        .then(json => {
+            dogPictures = document.getElementById("dog-image-container")
+            ////parse the response as JSON
+            for (let i = 0; i < json.message.length; i++) {
+                //add image elements to the DOM for each🤔 image in the array
+                dogPictures.innerHTML += `<div><img src="${json.message[i]}" alt="Dog Pictures"></div>`
+            } 
+        });
+}
+
+function fetchBreed() {
+    const breedUrl = 'https://dog.ceo/api/breeds/list/all'
+    //on page load, fetch all the dog breeds using the url above 
+    fetch(breedUrl)
+    .then(resp => resp.json())
+        .then(json => renderBreeds(json.message))
+            //document.getElementById("dog-breeds")
+            // dogBreed = document.getElementById("dog-breeds")
+            //     test = Object.keys(json.message) //originalBreeds 
+           
+            //  for (let i = 0; i < test.length; i++) {
+                
+            //     dogBreed.innerHTML += `<li>${test[i]}</li>`
+            // } 
+            //         dogBreed.addEventListener('click', function (event) {
+            //         // as soon as the list item is clicked, change its color to red 
+            //         event.target.style.color = colorObject[event.target.style.color];
+            //  })
+        // });
+}
+
+function removeBreeds() {
+    let filter = filterDogBreeds
+    // console.log(event)
+    let dogBreed = document.getElementById("dog-breeds")
+        while (dogBreed.firstChild) {
+        dogBreed.removeChild(dogBreed.firstChild);
+        }
+        filterDogBreeds(event)
+}
+
+function filterDogBreeds(event) {
+    // sets letter to the value of the breed=dropdown "a -d "
+    letter = (event.target.value)
+            //  console.log(test);
+            // Gets breeds that start with the letter selected.
+             let result = test.filter((event) => event.startsWith(letter))
+            //  console.log(result) 
+             updateList(result)
+                // return result
+            //  test.appendChild(result)
+            
+};      
+
+// function filterBreeds() {
+//     dogBreed.innerHTML = ""
+//     for (let i = 0; i < test.length; i++) {
+//         //Create li 
+//         newDog = document.createElement('li')
+//             breedName = test[i]
+//             //debugger
+//                 newDog.innerText = breedName
+//                     (breedName.filter = "letter") //{
+//                         debugger
+
+//                         dogBreed.appendChild(newDog)
+//                     // } else {
+//                     //     dogBreed.appendChild(newDog)
+//                     //}
+//             // dogBreed.appendChild(newDog)
+//     }
+// }
+
+function renderBreeds(message) {
+    //document.getElementById("dog-breeds")
+    dogBreed = document.getElementById("dog-breeds")
+        test = Object.keys(message) //originalBreeds 
+    // iterate over the array
+     for (let i = 0; i < test.length; i++) {
+        dogBreed.innerHTML += `<li>${test[i]}</li>`
+    } 
+            dogBreed.addEventListener('click', function (event) {
+            // as soon as the list item is clicked, change its color to red 
+            event.target.style.color = colorObject[event.target.style.color];
+            })
+};
+
+// function createMenuItem(name) {
+//     let li = document.createElement('li');
+//     li.textContent = name;
+//     return li;
+
+function updateList(message) {
+    // debugger
+    //  renderBreeds(message) //when commented out displays ul breeds that start with letter and ul undefined
+    // Set ul to the li on document
+    //  let ul = document.querySelector(`#dog-breeds`) //diplays ul numbers and breeds that start with letter
+    // itereate over each dog breed name
+     for (let i = 0; i < test.length; i++) {
+        // create li for each dog breed name
+         let createLI = document.createElement('li') 
+         if (message[i] != undefined){
+            createLI.innerHTML=message[i]
+            document.body.appendChild(createLI) //displays breeds that start with letter
+         }
+    }
+}
+     
+
+
+
+    // document.li.appendChild(li)
+    // console.log(message) // message HAS THE BREED NAMES DISPLAYS UL NUMBERS
+    // console.log(dogBreed) // dogBreed  <ul id="dog-breeds">...<ul> DiSPLAYS UL NUMBERS
+    // console.log(test) // (11) ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] DISPLAYS UL NUMBERS
+
+// // function updateList(result) {
+// //     renderBreeds(result)
+//     // renderBreeds(message) // message is not defined
+//                //Create li 
+//         //    let newDog = document.createElement('li')
+//         //    let breedName = test[i] // i is not defined
+//            //debugger
+//            message.innerText = breedName
+//            if (breedName.filter = "letter") {
+//                dogBreed.appendChild(message)
+//            } else {
+//                dogBreed.appendChild(message)
+//            }
+//    // dogBreed.appendChild(newDog)
+// }
+//            //Create li 
+//         //    let newDog = document.createElement('li')
+//         //    let breedName = test[i] // i is not defined
+//            //debugger
+//                message.innerText = breedName
+//                    if (breedName.filter = "letter") {
+//                        dogBreed.appendChild(message)
+//                    } else {
+//                        dogBreed.appendChild(message)
+//                    }
+//            // dogBreed.appendChild(newDog)
+// }
+    // var node = document.createElement("LI");
+    // var textnode = document.createTextNode("Modified List"); //displays the text Modified List
+    //test now displays the number of ul's 
+    // var textnode = document.createTextNode(test); 
+    // node.appendChild(textnode);  
+    // document.getElementById("dog-breeds").appendChild(node); 
+    // let li = document.createElement("li")
+    // li.appendChild(result)
+
+
+    //  debugger //HIT
+    // let li = document.createElement("li")
+    // // debugger //DROP DOWN MENU DOES NOT WORK!!!
+    // li.textContent = breed;
+    // return breed.
+
+    // result.forEach(breed => console.log(breed))
+
+
+    // var para = document.createElement("P");                       // Create a <p> node
+    // let modifiedList = document.createElement("ul")
+    // var t = document.createTextNode("This is a paragraph.");      // Create a text node
+    // let newList = document.
+    // para.appendChild(t);                                          // Append the text to <p>
+
+    // document.getElementById("myDIV").appendChild(para);           // Append <p> to <div> with id="myDIV"
+
+
+
+    //Iterate over array
+    // array.forEach(item => console.log(item));
+    //  result.forEach(breed => console.log(breed))
+
+    // let selectedList = result.forEach(breed => console.log(breed))
+    // selectedList.textContent = breed
+    // return selectedList
+    
+
+
+// function createMenuItem(name) {
+//     let li = document.createElement('li');
+//     li.textContent = name;
+//     return li;
+
+
+    // let li = document.createElement('li');
+    //      li.textContent = name;
+    //          return li;
+
+
+
+    // let newList = document.querySelector(`#dog-breeds`)
+    // let updatedList = result
+    // let breedList = result
+    // newList.appendChild(updateList)
+    // newList.appendChild(result)
+    // console.log(newList)
+
+    // var elmnt = document.createElement("dog-breeds");
+    // var textnode = document.createTextNode(updatedList);
+    // elmnt.appendChild(textnode);
+    // var item = document.getElementById(breedList);
+
+
+    // document.getElementById("dog-breeds").appendChild(result)
+    // document.getElementById("dog-breeds").appendChild(updateList)
+    
+    // const breedList = document.querySelector("dog-breeds")
+    // const breedList = document.getElementById("dog-breeds")
+    // const breedList = document.querySelector('#dog-breeds');
+    // breedList.appendChild(updateList(`dog-breeds`))
+    // const breedList = document.querySelector(dogBreed)
+    // breedList.appendChild(updateList)
+        // return breedList
+
+
+    // breedList.appendChild(updatedList)
+    // return breedList.appendChild(updatedList)
+    // return updatedList
+    // return result
+    // return breedList
+    
+
+
+// function createMenuItem(name) {
+//     let li = document.createElement('li');
+//     li.textContent = name;
+//     return li;
+// }
+// get the ul#menu
+// const menu = document.querySelector('#menu');
+
+// add menu item
+// menu.appendChild(createMenuItem('Home'));
+// menu.appendChild(createMenuItem('Services'));
+// menu.appendChild(createMenuItem('About Us'));
+
+
+
+
+    
+    
+
+
+
+
+ 

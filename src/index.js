@@ -3,7 +3,6 @@ console.log('%c HI', 'color: firebrick')
 document.addEventListener("DOMContentLoaded", function () {
     fetchImages();
     fetchBreeds();
-    changeColor();
 })
 
 
@@ -37,15 +36,34 @@ function breedName(json){
         breedLi.innerHTML = breedName;
         breeds.appendChild(breedLi);
     }
-
+    changeColor()
+    selectBreeds()
 }
 
+
 function changeColor(){
-     const listItems = document.getElementsByTagName('li');
-    
+    const listItems = document.getElementsByTagName('li');
     for (const li of listItems){
         li.addEventListener('click', function(){
             li.style.color = 'blue'});
         }
+}
 
+
+
+function selectBreeds (){
+    subBreeds = document.getElementById('breed-dropdown');
+    subBreeds.addEventListener('change', function(){
+        newSubBreedsValue = subBreeds.value;
+        editBreeds(newSubBreedsValue)
+    })
+}
+
+function editBreeds(newSubBreedsValue){
+    const ul = document.getElementById('dog-breeds');
+    const list = document.getElementsByTagName('li');
+    for (const editli of list){ 
+        if (editli.innerText.charAt(0) != newSubBreedsValue)
+            ul.removeChild(editli);
+    }
 }

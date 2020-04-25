@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fetchBreeds();
 })
 
+var breedNames = []
 
 function fetchImages() {
     const imgUrl = "https://dog.ceo/api/breeds/image/random/4"
@@ -25,13 +26,17 @@ function renderImages(json) {
 function fetchBreeds() {
     const breedUrl = 'https://dog.ceo/api/breeds/list/all'
     return fetch(breedUrl).then(resp => resp.json())
-    .then(json => breedName(json));
-
+    .then(json => {
+        for (const key in json.message) {
+            breedNames.push(key);
+        }
+        breedName(breedNames);
+    });
 }
 
-function breedName(json){
+function breedName(breedNames){
     const breeds = document.getElementById('dog-breeds');
-    for (const breedName in json.message) {
+    for (const breedName of breedNames) {
         const breedLi = document.createElement('li');
         breedLi.innerHTML = breedName;
         breeds.appendChild(breedLi);
@@ -40,7 +45,6 @@ function breedName(json){
     selectBreeds()
 }
 
-
 function changeColor(){
     const listItems = document.getElementsByTagName('li');
     for (const li of listItems){
@@ -48,8 +52,6 @@ function changeColor(){
             li.style.color = 'blue'});
         }
 }
-
-
 
 function selectBreeds (){
     subBreeds = document.getElementById('breed-dropdown');
@@ -60,10 +62,10 @@ function selectBreeds (){
 }
 
 function editBreeds(newSubBreedsValue){
-    const ul = document.getElementById('dog-breeds');
-    const list = document.getElementsByTagName('li');
-    for (const editli of list){ 
-        if (editli.innerText.charAt(0) != newSubBreedsValue)
-            ul.removeChild(editli);
+    const ul = document.getElementById('dog-breeds')
+    const li = document.getElementsByTagName('li')
+    for (const editli of breedNames){   
+        if (editli.charAt(0) != newSubBreedsValue) 
+            ul.removeChild(li[breedNames.indexOf(editli)]);
     }
 }

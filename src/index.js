@@ -62,10 +62,11 @@ function selectBreeds (){
 }
 
 function editBreeds(newSubBreedsValue){
-    const ul = document.getElementById('dog-breeds')
-    const li = document.getElementsByTagName('li')
-    for (const editli of breedNames){   
-        if (editli.charAt(0) != newSubBreedsValue) 
-            ul.removeChild(li[breedNames.indexOf(editli)]);
-    }
+    emptyList = document.getElementById('dog-breeds')
+    while (emptyList.hasChildNodes()) {  
+        emptyList.removeChild(emptyList.firstChild);
+      }
+    breedSubset = breedNames.filter(breedname => breedname.charAt(0) == newSubBreedsValue)
+    breedName(breedSubset);
+    
 }

@@ -1,3 +1,5 @@
+// For mostly better code, check out https://github.com/learn-co-curriculum/jsdom-fetch-dog-ceo-challenge/blob/solution/src/index.js
+
 console.log('%c HI', 'color: firebrick');
 
 const imgUrl = "https://dog.ceo/api/breeds/image/random/4";
@@ -93,7 +95,7 @@ function addBreedList (json) {
     // If the user selects A, e.g., only display dog breeds starting with A.
     for (const breedName in breeds) {
       if (breedName.startsWith(firstLetter)) {
-        sameFirstLetterBreeds[breedName] = breeds[breedName];
+        sameFirstLetterBreeds[breedName] = breeds[breedName]; // I may be able to refactor this with .filter()
       }
     }
     

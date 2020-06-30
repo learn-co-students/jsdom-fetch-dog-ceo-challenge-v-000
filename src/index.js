@@ -36,27 +36,24 @@ function renderDogBreeds(json) {
 
     breeds.forEach(breed => {
         const li = document.createElement('li')
-              li.addEventListener('onclick', (event) => {
+              li.addEventListener('click', (event) => {
                   event.preventDefault()
-                  changeColor()
+                  changeTextColor(event)
               })
         const hasMultipleBreeds = dogs[breed].length >= 1 ? true : false
         
-        debugger
         if (hasMultipleBreeds) {
             for(let i = 0; i < dogs[breed].length; i++) {
-                debugger
                 li.innerHTML = `${breed} ${dogs[breed][i]}`
                 container.appendChild(li)
             }
         } else {
-            debugger
             li.innerHTML = `${breed}`
             container.appendChild(li)
         }
     })
 }
 
-function changeColor() {
-    
+function changeTextColor(element) {
+    element.target.style.color = 'red';
 }

@@ -5,6 +5,7 @@ var filterOption = ''
 document.addEventListener("DOMContentLoaded", () => {
     loadImages(imgUrl)
     loadDogBreeds(breedUrl)
+    
 })
 
 function loadImages(url) {

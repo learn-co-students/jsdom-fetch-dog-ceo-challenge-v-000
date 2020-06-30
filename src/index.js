@@ -3,6 +3,7 @@ const breedUrl = 'https://dog.ceo/api/breeds/list/all'
 var filterOption = ''
 
 document.addEventListener("DOMContentLoaded", () => {
+  
     loadImages(imgUrl)
     loadDogBreeds(breedUrl)
     

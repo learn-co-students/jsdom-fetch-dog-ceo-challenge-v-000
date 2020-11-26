@@ -21,7 +21,7 @@ console.log('%c HI', 'color: firebrick')
 // buhund: ["norwegian"]
 // bulldog: (3) ["boston", "english", "french"]
 // bullterrier: ["staffordshire"]
-
+document.addEventListener('DOMContentLoaded', function() {
 function fetchDogs(){
   return fetch(imgUrl)
   .then(resp => resp.json())
@@ -44,9 +44,22 @@ function renderTests(Images){
    });
  }
 
+function addBreedSelectListener(){
+  let breedDropdown = document.querySelector('#breed-dropdown');
+  breedDropdown.addEventListener('change',(e) => {
+    let ul = document.querySelector('#dog-breeds');
+    removeOldUl(ul); //clean the li.
+    let selectBreeds = aBreeds.filter( (item) => { return item[0] === e.target.value; });
+    // console.log(selectBreeds) ;
+    updateBreedList(selectBreeds);
+
+  });
+}
+
  function renderBreeds(Breeds){
    aBreeds =  Object.keys(Breeds);  //move the breeds keys in the object into the array
-   updateBreedList();
+   updateBreedList(aBreeds);
+   addBreedSelectListener(); //for the select option
  }
 
  function removeOldUl(ul){
@@ -58,10 +71,10 @@ function renderTests(Images){
  function updateColor(e){
    e.target.style.color="red";
  }
- function updateBreedList(){
+ function updateBreedList(arrayBreed){
    let ul = document.querySelector('#dog-breeds');
    removeOldUl(ul);
-   for (const p of aBreeds){
+   for (const p of arrayBreed){
      let li = document.createElement('li');
      li.textContent= p;
      li.style.cursor = 'pointer';
@@ -74,8 +87,7 @@ function renderTests(Images){
  let aBreeds= [];
  const imgUrl = "https://dog.ceo/api/breeds/image/random/4";
  const breedsUrl = "https://dog.ceo/api/breeds/list/all";
-// document.addEventListener('DOMContentLoaded', function() {
   fetchDogs();
   fetchBreeds();
 
-// })
+})
